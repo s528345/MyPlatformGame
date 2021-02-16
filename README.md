@@ -1,3 +1,3 @@
 # MyPlatformGame
 
-![]("https://www.kenney.nl/")
+[Kenny Game Art]("https://www.kenney.nl/")
