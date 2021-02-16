@@ -8,22 +8,30 @@ var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	$AnimatedSprite.animation = 'idle'
+	$Sprite.play('idle')
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
-		$AnimatedSprite.animation = 'walk'
-	if Input.is_action_pressed("ui_left"):
+		$Sprite.play("walk")
+		$Sprite.flip_h = false
+	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
-		$AnimatedSprite.animation = 'walk'
+		$Sprite.play("walk")
+		$Sprite.flip_h = true
+	else: 
+		$Sprite.play("idle")
+	if not is_on_floor():
+		$Sprite.play("jump")
 		
 	velocity.y = velocity.y + GRAVITY
 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMPFORCE
-	velocity = move_and_slide(velocity)
+		$Sprite.play("jump")
+	
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 	velocity.x = lerp(velocity.x,0,0.2)
