@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 var velocity = Vector2.ZERO 
-const SPEED = 180
-const JUMPFORCE = -750
+const SPEED = 300
+const JUMPFORCE = -950
 const GRAVITY = 30
 var screen_size
 

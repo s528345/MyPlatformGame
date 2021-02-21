@@ -19,6 +19,11 @@ config/name="MyPlatformGame"
 run/main_scene="res://Level1.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1400
+window/size/height=900
+
 [input]
 
 jump={
