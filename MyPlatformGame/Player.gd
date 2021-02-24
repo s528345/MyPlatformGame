@@ -2,13 +2,19 @@ extends KinematicBody2D
 
 var velocity = Vector2.ZERO 
 const SPEED = 300
-const JUMPFORCE = -950
+const JUMPFORCE = -1200
 const GRAVITY = 30
 var screen_size
+var coins = 0
+
+signal win
+
+#https://www.gameart2d.com/the-robot---free-sprites.html
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	$Sprite.play('idle')
+	
 	
 func _physics_process(_delta):
 	
@@ -28,10 +34,25 @@ func _physics_process(_delta):
 		
 	velocity.y = velocity.y + GRAVITY
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMPFORCE
+	if Input.is_action_just_pressed("space") and is_on_floor():
 		$Sprite.play("jump")
+		velocity.y = JUMPFORCE
+		
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 	velocity.x = lerp(velocity.x,0,0.2)
+
+	if coins == 5:
+		emit_signal("win")
+	coins = 0
+		
+
+
+func _on_Fallzone_body_entered(_body):
+	$Sprite.play("dead")
+	get_tree().change_scene("res://Level1.tscn")
+	
+func addCoin():
+	coins = coins + 1
+	
