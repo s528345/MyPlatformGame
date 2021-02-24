@@ -5,7 +5,6 @@ const SPEED = 300
 const JUMPFORCE = -1200
 const GRAVITY = 30
 var screen_size
-var coins = 0
 
 signal win
 
@@ -43,9 +42,7 @@ func _physics_process(_delta):
 
 	velocity.x = lerp(velocity.x,0,0.2)
 
-	if coins == 5:
-		emit_signal("win")
-	coins = 0
+
 		
 
 
@@ -53,6 +50,4 @@ func _on_Fallzone_body_entered(_body):
 	$Sprite.play("dead")
 	get_tree().change_scene("res://Level1.tscn")
 	
-func addCoin():
-	coins = coins + 1
 	

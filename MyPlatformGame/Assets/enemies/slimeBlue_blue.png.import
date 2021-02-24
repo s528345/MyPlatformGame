@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portalRings2.png-d628fec9dcda8e2972c836dadf60fd13.stex"
+path="res://.import/slimeBlue_blue.png-d3672895cbd9b71c14a68afb82b88df0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Portal/portalRings2.png"
-dest_files=[ "res://.import/portalRings2.png-d628fec9dcda8e2972c836dadf60fd13.stex" ]
+source_file="res://Assets/enemies/slimeBlue_blue.png"
+dest_files=[ "res://.import/slimeBlue_blue.png-d3672895cbd9b71c14a68afb82b88df0.stex" ]
 
 [params]
 
