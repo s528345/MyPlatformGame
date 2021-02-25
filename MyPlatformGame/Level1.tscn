@@ -184,28 +184,6 @@ position = Vector2( 3141.56, 561.068 )
 [node name="Coin5" parent="Coins" instance=ExtResource( 6 )]
 position = Vector2( 3607, 449.8 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 150, 350 )
-scale = Vector2( 0.25, 0.25 )
-collision_mask = 30
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 195.58, 583.667 )
-scale = Vector2( 0.25, 0.25 )
-offset = Vector2( 0, -190 )
-current = true
-limit_left = -25
-limit_right = 5000
-limit_smoothed = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = true
-drag_margin_left = 0.1
-drag_margin_top = 0.1
-drag_margin_right = 0.1
-drag_margin_bottom = 0.0
-editor_draw_limits = true
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2( 1.5, 1.5 )
 transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
@@ -325,11 +303,32 @@ position = Vector2( 2057.33, 455.266 )
 
 [node name="Mob3" parent="Mobs" instance=ExtResource( 11 )]
 position = Vector2( 915.333, -84.7344 )
-detect_cliff = false
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 150, 350 )
+scale = Vector2( 0.25, 0.25 )
+collision_mask = 30
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 195.58, 583.667 )
+scale = Vector2( 0.25, 0.25 )
+offset = Vector2( 0, -190 )
+current = true
+limit_left = -25
+limit_right = 5000
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.0
+editor_draw_limits = true
 [connection signal="coin_collected" from="Coins/Coin1" to="CoinHUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin2" to="CoinHUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin3" to="CoinHUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin4" to="CoinHUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin5" to="CoinHUD" method="_on_coin_collected"]
-[connection signal="win" from="Player" to="." method="_on_Player_win"]
 [connection signal="body_entered" from="Fallzone" to="Player" method="_on_Fallzone_body_entered"]
+[connection signal="win" from="Player" to="." method="_on_Player_win"]

@@ -43,11 +43,30 @@ func _physics_process(_delta):
 	velocity.x = lerp(velocity.x,0,0.2)
 
 
+func bounce():
+	velocity.y = JUMPFORCE / 2
+	
+func damage(var mob_pos_x):
+	set_modulate(Color(1,.3,.3,.3))
+	$DamageTimer.start()
+	velocity.y = JUMPFORCE / 4
+	
+	if(position.x < mob_pos_x):
+		velocity.x = -700
+	elif(position.x > mob_pos_x):
+		velocity.x = 700
 		
-
+	Input.action_pressed("ui_right")
+	Input.action_pressed("ui_left")
 
 func _on_Fallzone_body_entered(_body):
 	$Sprite.play("dead")
+	$Timer.start()
+	
+
+func _on_Timer_timeout():
 	get_tree().change_scene("res://Level1.tscn")
-	
-	
+
+
+func _on_DamageTimer_timeout():
+	set_modulate(Color(1,1,1,1))

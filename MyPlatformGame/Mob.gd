@@ -28,3 +28,31 @@ func _physics_process(delta):
 	velocity.x = SPEED * direction
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+
+func _on_TopChecker_body_entered(body):
+	$AnimatedSprite.play("dead")
+	SPEED = 0
+	# Turn off collision
+	set_collision_layer_bit(4,false)
+	# Turn off player collision
+	set_collision_mask_bit(0,false)
+	#Turn off top checker collisions 
+	$TopChecker.set_collision_layer_bit(4,false)
+	$TopChecker.set_collision_mask_bit(0,false)
+	#Turn off sides checker collisions 
+	$SidesChecker.set_collision_layer_bit(4,false)
+	$SidesChecker.set_collision_mask_bit(0,false)
+	
+	$Timer.start()
+	
+	body.bounce()
+
+
+func _on_SidesChecker_body_entered(body):
+	print("Enemy hit player, Ouch")
+	body.damage(position.x)
+
+
+func _on_Timer_timeout():
+	queue_free()
