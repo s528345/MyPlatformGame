@@ -6,7 +6,6 @@ const JUMPFORCE = -1075
 const GRAVITY = 30
 var screen_size
 
-signal win
 
 #https://www.gameart2d.com/the-robot---free-sprites.html
 
