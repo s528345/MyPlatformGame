@@ -23,3 +23,7 @@
 
 # [The Game Art 2D](https://www.gameart2d.com/)
 ## Using Robot Sprite (https://www.gameart2d.com/the-robot---free-sprites.html)
+
+# Bonus
+- Added wandering enemy
+- Added improve game over screen
