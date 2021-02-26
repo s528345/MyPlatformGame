@@ -12,6 +12,8 @@ func _ready():
 	#Put ray check to front of mob for floor checking
 	$FloorCheck.position.x = $CollisionShape2D.shape.get_extents().x * direction
 	$FloorCheck.enabled = detect_cliff
+	if detect_cliff:
+		set_modulate(Color(1,1,0,1))
 	
 
 func _physics_process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://pass.tres" type="TileSet" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -11,9 +11,11 @@
 [ext_resource path="res://CoinHUD.gd" type="Script" id=9]
 [ext_resource path="res://Assets/Xolonium-Regular.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Portal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Portal.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 163.492, 11.0474 )
+extents = Vector2( 129.068, 10.5544 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 163.017, 12.743 )
@@ -57,6 +59,9 @@ extents = Vector2( 170.524, 9.21716 )
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 2466.74, 29.8013 )
 
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 100.485, 10 )
+
 [sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.305882, 0.305882, 0.305882, 0.537255 )
 corner_radius_top_left = 15
@@ -81,7 +86,7 @@ tile_set = ExtResource( 1 )
 collision_layer = 2
 collision_mask = 49
 format = 1
-tile_data = PoolIntArray( -393169, 1, 0, -393168, 0, 0, -393167, 0, 0, -393166, 0, 0, -393165, 0, 0, -393164, 2, 0, -262125, 1, 0, -262124, 0, 0, -262123, 0, 0, -262122, 0, 0, -262121, 0, 0, -262120, 2, 0, -131038, 1, 0, -131037, 0, 0, -131036, 0, 0, -131035, 2, 0, -131020, 1, 0, -131019, 0, 0, -131018, 0, 0, -131017, 0, 0, -131016, 0, 0, -131015, 2, 0, -65527, 1, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 2, 0, 60, 1, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 64, 2, 0, 65558, 1, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0, 65562, 2, 0, 196611, 1, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 2, 0, 196622, 1, 0, 196623, 2, 0, 196639, 1, 0, 196640, 0, 0, 196641, 0, 0, 196642, 0, 0, 196643, 2, 0, 262213, 1, 0, 262214, 0, 0, 262215, 0, 0, 262216, 0, 0, 262217, 2, 0, 393254, 1, 0, 393255, 2, 0, 524330, 1, 0, 524331, 2, 0, 655408, 1, 0, 655409, 2, 0 )
+tile_data = PoolIntArray( -393169, 1, 0, -393168, 0, 0, -393167, 0, 0, -393166, 0, 0, -393165, 0, 0, -393164, 2, 0, -262125, 1, 0, -262124, 0, 0, -262123, 0, 0, -262122, 0, 0, -262121, 0, 0, -262120, 2, 0, -131038, 1, 0, -131037, 0, 0, -131036, 0, 0, -131035, 2, 0, -131020, 1, 0, -131019, 0, 0, -131018, 0, 0, -131017, 0, 0, -131016, 0, 0, -131015, 2, 0, -65527, 1, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 2, 0, 60, 1, 0, 61, 0, 0, 62, 0, 0, 63, 0, 0, 64, 2, 0, 65558, 1, 0, 65559, 0, 0, 65560, 0, 0, 65561, 0, 0, 65562, 2, 0, 196611, 1, 0, 196612, 0, 0, 196613, 0, 0, 196614, 2, 0, 196622, 1, 0, 196623, 2, 0, 196639, 1, 0, 196640, 0, 0, 196641, 0, 0, 196642, 0, 0, 196643, 2, 0, 262213, 1, 0, 262214, 0, 0, 262215, 0, 0, 262216, 0, 0, 262217, 2, 0, 393254, 1, 0, 393255, 2, 0, 524330, 1, 0, 524331, 2, 0, 655408, 1, 0, 655409, 2, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Tiles One-Way"]
 position = Vector2( 1, 0 )
@@ -89,7 +94,7 @@ collision_layer = 2
 collision_mask = 49
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles One-Way/StaticBody2D"]
-position = Vector2( 355.058, 203.047 )
+position = Vector2( 325, 203.047 )
 shape = SubResource( 1 )
 one_way_collision = true
 
@@ -196,7 +201,7 @@ motion_mirroring = Vector2( 1280, 960 )
 modulate = Color( 0, 0.835294, 1, 1 )
 self_modulate = Color( 0, 1, 0.976471, 1 )
 light_mask = 1048575
-position = Vector2( -23.1619, -191.44 )
+position = Vector2( -23.1619, -198.359 )
 scale = Vector2( 25, 25 )
 texture = ExtResource( 4 )
 centered = false
@@ -247,6 +252,11 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fallzone"]
 position = Vector2( 312.758, 885.751 )
 shape = SubResource( 15 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fallzone"]
+position = Vector2( 4100, 800 )
+scale = Vector2( 5, 5 )
+shape = SubResource( 19 )
 
 [node name="CoinHUD" type="CanvasLayer" parent="."]
 script = ExtResource( 9 )
@@ -304,6 +314,14 @@ position = Vector2( 2057.33, 455.266 )
 [node name="Mob3" parent="Mobs" instance=ExtResource( 11 )]
 position = Vector2( 915.333, -84.7344 )
 
+[node name="Mob4" parent="Mobs" instance=ExtResource( 11 )]
+position = Vector2( 4088.41, -32.3197 )
+
+[node name="Portal" parent="." instance=ExtResource( 12 )]
+position = Vector2( 4000, 399.063 )
+scale = Vector2( 5, 5 )
+script = ExtResource( 13 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 150, 350 )
 scale = Vector2( 0.25, 0.25 )
@@ -326,9 +344,15 @@ drag_margin_right = 0.1
 drag_margin_bottom = 0.0
 editor_draw_limits = true
 [connection signal="coin_collected" from="Coins/Coin1" to="CoinHUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin1" to="Portal" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin2" to="CoinHUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin2" to="Portal" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin3" to="CoinHUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin3" to="Portal" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin4" to="CoinHUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin4" to="Portal" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin5" to="CoinHUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin5" to="Portal" method="_on_coin_collected"]
 [connection signal="body_entered" from="Fallzone" to="Player" method="_on_Fallzone_body_entered"]
+[connection signal="body_entered" from="Portal" to="Player" method="_on_Portal_body_entered"]
 [connection signal="win" from="Player" to="." method="_on_Player_win"]
