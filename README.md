@@ -21,5 +21,5 @@
 ## Used for guide to make this platformer game
 ## Used background from BornCG, got package from BornCG
 
-# [The Game Art 2D] (https://www.gameart2d.com/)
+# [The Game Art 2D](https://www.gameart2d.com/)
 ## Using Robot Sprite (https://www.gameart2d.com/the-robot---free-sprites.html)
